@@ -44,7 +44,7 @@
 
 	{!! Form::label('disposicion_PPunzo', 'Disposicion') !!}
 	<!--{!! Form::text('disposicion_PPunzo', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_PPunzo', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_PPunzo', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesopun->disposicion_PPunzo, ['class' => 'form-control']  ) !!}
 	
 </div>
 

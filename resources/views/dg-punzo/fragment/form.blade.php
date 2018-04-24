@@ -1,35 +1,28 @@
 <div class="form-group">
 
-	{!! Form::label('id_Punzo', 'ID Punzonado') !!}
-	{!! Form::select('id_Punzo', $punzo, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DGP', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DGP', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('id_Punzo', 'Diseño Punzonado') !!}
+	{!! Form::select('id_Punzo', $punzo, ['' => 'Seleccione un diseño..!', ], ['class' => 'form-control']) !!}
 	
 </div>
 
 <div class="form-group">
 
-	{!! Form::label('horaE_DGP', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DGP', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('color_DGP', 'Confirme color de Diseño *') !!}
+	{!! Form::text('color_DGP', null, ['class' => 'form-control'] ) !!}
 	
-</div>-->
+</div>
+
+<div class="form-group">
+
+	{!! Form::label('id_Procesos', 'Tipo de Proceso') !!}
+	{!! Form::select('id_Procesos', $proceso, ['' => 'Seleccione un proceso..!', ], ['class' => 'form-control']) !!}
+	
+</div>
 
 <div class="form-group">
 
 	{!! Form::label('Npieza_DGP', 'Numero de pieza') !!}
 	{!! Form::text('Npieza_DGP', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('color_DGP', 'Color') !!}
-	{!! Form::text('color_DGP', null, ['class' => 'form-control'] ) !!}
 	
 </div>
 

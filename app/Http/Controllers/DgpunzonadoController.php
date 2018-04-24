@@ -7,6 +7,7 @@ use App\dgpunzonado;
 use App\Http\Requests\dgpunzonadoRequest;
 use DB;
 use App\telaspunzonado;
+use App\procesos;
 
 class DgpunzonadoController extends Controller
 {
@@ -15,9 +16,11 @@ class DgpunzonadoController extends Controller
     	/*$dgpunzo = dgpunzonado::orderBy('id_DGP','DESC')->paginate();*/
 
         $dgpunzo = DB::table('dgpunzonados')
-            ->join('telaspunzonados', 'dgpunzonados.id_Punzo', '=', 'telaspunzonados.id_Punzo')
-            ->select('dgpunzonados.*', 'telaspunzonados.Diseño_Punzo')
+            ->join('telaspunzonados', 'telaspunzonados.id_Punzo', '=', 'dgpunzonados.id_Punzo')
+            ->join('Procesos', 'Procesos.id_Procesos', '=', 'dgpunzonados.id_Procesos')
+            ->select('dgpunzonados.*', 'telaspunzonados.Diseño_Punzo', 'Procesos.Proceso')
             ->get();
+
     	return view('dg-punzo.index',compact('dgpunzo'));
     }
 
@@ -35,8 +38,14 @@ class DgpunzonadoController extends Controller
 
     public function create()
     {
-        $punzo = telaspunzonado::pluck('Diseño_Punzo', 'id_Punzo');
-        return view('dg-punzo.create', compact('punzo'));
+        //$punzo = telaspunzonado::pluck('Diseño_Punzo', 'id_Punzo');
+        $punzo = telaspunzonado::select( 
+                DB::raw("CONCAT(Diseño_Punzo,' ---- ',color_Punzo) AS DisPunzo") ,'id_Punzo')
+               ->pluck('DisPunzo', 'id_Punzo');
+      
+        $proceso = procesos::pluck('Proceso', 'id_Procesos');
+
+        return view('dg-punzo.create', compact('punzo','proceso'));
     }
 
     ///
@@ -58,6 +67,7 @@ class DgpunzonadoController extends Controller
         $dgpun->nombreOpera_DGP = $request->nombreOpera_DGP;
         $dgpun->comentarios_DGP = $request->comentarios_DGP;
         $dgpun->id_Punzo = $request->id_Punzo;
+        $dgpun->id_Procesos = $request->id_Procesos;
 
         $dgpun->save();
 
@@ -92,6 +102,7 @@ class DgpunzonadoController extends Controller
         $dgpun->nombreOpera_DGP = $request->nombreOpera_DGP;
         $dgpun->comentarios_DGP = $request->comentarios_DGP;
         $dgpun->id_Punzo = $request->id_Punzo;
+        $dgpun->id_Procesos = $request->id_Procesos;
 
         $dgpun->save();
 

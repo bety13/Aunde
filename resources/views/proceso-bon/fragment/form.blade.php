@@ -198,7 +198,7 @@
 
 	{!! Form::label('disposicion_PBondeo', 'Disposicion ') !!}
 	<!--{!! Form::text('disposicion_PBondeo', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_PBondeo', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_PBondeo', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesobon->disposicion_PBondeo, ['class' => 'form-control']  ) !!}
 	
 </div>
 

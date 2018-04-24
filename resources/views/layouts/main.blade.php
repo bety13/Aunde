@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="style/Pro_T_style.css">
+	<link rel="stylesheet" type="text/css" href="style/imprimir.css" media="print" />
 
 <!--________________________________________________________________________________________________________-->
 	<link href="portafolio/css/bootstrap.min.css" rel="stylesheet" />
@@ -96,7 +97,7 @@
 	<div class="lin2"></div>
 
 
-	<section style=" width: 100%; background-color: #e6e6e6; position: relative; float: left; ">
+	<section id="ple" style=" width: 100%; background-color:; position: relative; float: left; ">
 			<!-- Section: about -->
     <section id="about" class="home-section text-center bg-gray">
 		<div class="heading-about marginbot-50">
@@ -151,18 +152,18 @@ function onClick(element) {
 	<!-- /Section: about -->
 	</section>
 
-	<div style="height: 40px; width: 100%; background-color: #e6e6e6; position: relative;float: left;"></div>
+	<div id="foot" style="height: 40px; width: 100%; background-color: #e6e6e6; position: relative;float: left;"></div>
 
-	<div style="height: 10px; width: 100%; background-color: #808080; position: relative;float: left;"></div>
-
-
-
-<div style="height: 40px; width: 100%; background-color: #102e56; position: relative;float: left;"></div>
-
-<div style="height: 1px; width: 100%; background-color: black; position: relative;float: left;"></div>
+	<div id="foot" style="height: 10px; width: 100%; background-color: #808080; position: relative;float: left;"></div>
 
 
-<section style="background-color: #0c2341; height: ; width: 100%; position: relative; float: left;">
+
+<div id="foot" style="height: 40px; width: 100%; background-color: #102e56; position: relative;float: left;"></div>
+
+<div id="foot" style="height: 1px; width: 100%; background-color: black; position: relative;float: left;"></div>
+
+
+<section id="foot" style="background-color: #0c2341; height: ; width: 100%; position: relative; float: left;">
 
 					<div  style=" width: 42%; position: relative; float: left; margin: 30px; margin-left: 50px; color: white; background-color: ">
 						AUNDE MEXICO S.A DE C.V  <br>

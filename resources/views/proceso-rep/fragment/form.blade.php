@@ -128,7 +128,7 @@
 
 	{!! Form::label('disposicion_PRep', 'Disposicion ') !!}
 	<!--{!! Form::text('disposicion_PRep', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_PRep', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_PRep', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesorep->disposicion_PRep, ['class' => 'form-control']  ) !!}
 	
 </div>
 

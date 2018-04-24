@@ -54,4 +54,12 @@ class clientes extends Model
     {
         return $this->belongsToMany('App\telasbondeos');
     }
+
+
+    /* BUSCADOR */
+    public function scopeSearch($query, $nombreCliente)
+    {
+       return $query->where('nombreCliente', 'LIKE', "%$nombreCliente%");
+    }
+
 }

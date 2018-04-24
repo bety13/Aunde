@@ -1,35 +1,28 @@
 <div class="form-group">
 
-	{!! Form::label('id_Lav', 'ID Lavado') !!}
-	{!! Form::select('id_Lav', $lavado, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DGL', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DGL', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('id_Lav', 'Diseño Lavado') !!}
+	{!! Form::select('id_Lav', $lavado, ['' => 'Seleccione un diseño..!', ], ['class' => 'form-control']) !!}
 	
 </div>
 
 <div class="form-group">
 
-	{!! Form::label('horaE_DGL', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DGL', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('color_DGL', 'Confirme color de Diseño *') !!}
+	{!! Form::text('color_DGL', null, ['class' => 'form-control'] ) !!}
 	
-</div>-->
+</div>
+
+<div class="form-group">
+
+	{!! Form::label('id_Procesos', 'Tipo de Proceso') !!}
+	{!! Form::select('id_Procesos', $proceso, ['' => 'Seleccione un proceso..!', ], ['class' => 'form-control']) !!}
+	
+</div>
 
 <div class="form-group">
 
 	{!! Form::label('Npieza_DGL', 'Numero de pieza') !!}
 	{!! Form::text('Npieza_DGL', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('color_DGL', 'Color') !!}
-	{!! Form::text('color_DGL', null, ['class' => 'form-control'] ) !!}
 	
 </div>
 

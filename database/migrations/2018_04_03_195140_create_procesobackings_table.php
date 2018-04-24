@@ -39,8 +39,8 @@ class CreateProcesobackingsTable extends Migration
             $table->string('analista_PBack');
             $table->string('comentario_PBack')->nullable();
 
-            $table->integer('id_Ramas')->unsigned()->nullable();
-            $table->foreign('id_Ramas')->references('id_Ramas')->on('procesoramas');
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
 
             $table->timestamps();
         });

@@ -14,7 +14,7 @@
 				<li class="ili" ><a class="aa" href="{{ url('/procesotejidos') }}">Procesos</a></li>
 				<li class="ili" ><a class="aa" href="{{ url('/reprocesotejidos') }}">Re-Procesos</a></li>
 				<a class="aa" href=""><li class="ili">Certificado</li></a>
-				<a class="aa" href=""><li class="ili">Etiqueta</li></a>
+				<a class="aa" href="{{ url('etiqueta.blade.php') }}"><li class="ili">Etiqueta</li></a>
 						
 
 

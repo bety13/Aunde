@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class procesos extends Model
 {
 
+  protected $table = 'procesos';
+
+  protected $primaryKey = 'id_Procesos';
+
+
+  protected $fillable = ['Proceso' 
+                          ];
+
 
 	//----------------------------------------------------------
 	//             D a t o s    G e n e r a l e s               |
@@ -66,9 +74,33 @@ class procesos extends Model
         return $this->hasOne('App\procesotejidos');
     }
 
-    public function procesoramas()
+    public function procesolavados()
     {
-        return $this->hasOne('App\procesoramas');
+        return $this->hasOne('App\procesolavados');
+    }
+
+       public function procesotumblers()
+    {
+        return $this->hasOne('App\procesotumblers');
+    }
+
+      public function procesorepelentes()
+    {
+        return $this->hasOne('App\procesorepelentes');
+    }
+
+       public function procesobackings()
+    {
+        return $this->hasOne('App\procesobackings');
+    }
+
+          public function procesotermofijados()
+    {
+        return $this->hasOne('App\procesotermofijados');
+    }
+      public function procesopunzonados()
+    {
+        return $this->hasOne('App\procesopunzonados');
     }
 
     public function procesobondeos()

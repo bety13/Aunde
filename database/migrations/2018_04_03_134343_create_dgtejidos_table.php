@@ -30,6 +30,10 @@ class CreateDgtejidosTable extends Migration
 
             $table->integer('id_Tej')->unsigned();
             $table->foreign('id_Tej')->references('id_Tej')->on('telastejidos');
+            
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+           
 
             $table->timestamps();
         });

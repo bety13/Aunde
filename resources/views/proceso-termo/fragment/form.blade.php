@@ -135,7 +135,7 @@
 
 	{!! Form::label('disposicion_Ptermo', 'Disposicion ') !!}
 	<!--{!! Form::text('disposicion_Ptermo', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_Ptermo', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_Ptermo', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesoter->disposicion_Ptermo, ['class' => 'form-control']  ) !!}
 	
 </div>
 

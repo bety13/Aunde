@@ -65,7 +65,7 @@
 
 </style>
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2>"Control y Administracion de Telas REPELENTE"</h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -81,7 +81,7 @@
 						
 </div>
 
-<div class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
+<div id="no" class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
 			<center>
 			<h4>Listado de todas las Telas de área Repelente y registro de nuevas telas al sistema.</h4><br>
 			
@@ -110,14 +110,26 @@
 						
 </div>
 
-<h2>Listado de Telas Repelente</h2>
+<h2 id="no">Listado de Telas Repelente</h2>
+
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato de la tela, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar tela...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 		@include('clientes.fragment.info')
 		<div class="datoss" style="overflow: scroll; visibility: visible;">
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
-		<table class="table table-hover table-striped">
+		<table id="mytable" class="table table-hover table-striped">
 			<thead>
 				<thead>
 					<tr>
@@ -129,7 +141,7 @@
 					    <th colspan="14">Unidad de Medida</th>	
 					    <th colspan="15">Limite Superior</th>	
 					    <th colspan="15">Limite Inferior</th>
-					    <th colspan="2"
+					    <th id="no" colspan="2"
 					    	rowspan="2">&nbsp;</th>
 					</tr>
 					<tr>
@@ -261,7 +273,7 @@
 				 	<td> {{ $rep->LIE_tono_Rep }} </td>
 				 	
 				 	
-				 	<td>
+				 	<td id="no">
 				 		<a type="submit" class="btn btn-succes" href=" {{ route('telasrepelentes.edit', $rep->id_Rep) }} " style="background: #009900; 
 											  border: 0;
 											  width: 100px;
@@ -275,7 +287,7 @@
 												Editar 
 											</a>
 				 	</td>
-				 	<td>
+				 	<td id="no">
 				 		<form action=" {{ route('telasrepelentes.destroy', $rep->id_Rep) }} " method="POST" >
 				 			{{ csrf_field() }}
 				 			<input type="hidden" name="_method" value="DELETE">
@@ -296,6 +308,22 @@
 			</tbody>
 		</table>
 	</div>
-	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 
 @endsection

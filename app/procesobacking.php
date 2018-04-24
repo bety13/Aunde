@@ -34,7 +34,7 @@ class procesobacking extends Model
 						   'horaE_PBack',
 						   'analista_PBack',
 						   'comentario_PBack',
-						   'id_Ramas',
+						   'id_Procesos',
 						   ];
 
 
@@ -42,9 +42,9 @@ class procesobacking extends Model
 
 
 
-    public function procesoramas()
+     public function procesos()
     {
-        return $this->belongsTo('App\procesoramas');
+        return $this->belongsTo('App\procesos');
     }
 
  //--------------------------------------------

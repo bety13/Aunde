@@ -31,6 +31,9 @@ class CreateDgbackingsTable extends Migration
             $table->integer('id_Back')->unsigned();
             $table->foreign('id_Back')->references('id_Back')->on('telasbackings');
 
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+
             $table->timestamps();
         });
     }

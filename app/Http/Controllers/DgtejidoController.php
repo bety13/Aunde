@@ -8,6 +8,7 @@ use App\Http\Requests\dgtejidoRequest;
 use DB;
 use App\telastejido;
 use Carbon\Carbon;
+use App\procesos;
 
 class DgtejidoController extends Controller
 {
@@ -17,9 +18,11 @@ class DgtejidoController extends Controller
     */
 
         $dgtejidos = DB::table('dgtejidos')
-            ->join('telastejidos', 'dgtejidos.id_Tej', '=', 'telastejidos.id_Tej')
-            ->select('dgtejidos.*', 'telastejidos.Diseño_Tej')
+            ->join('telastejidos', 'telastejidos.id_Tej', '=', 'dgtejidos.id_Tej')
+            ->join('Procesos', 'Procesos.id_Procesos', '=', 'dgtejidos.id_Procesos')
+            ->select('dgtejidos.*', 'telastejidos.Diseño_Tej', 'Procesos.Proceso')
             ->get();
+
        
     	return view('dg-tejido.index',compact('dgtejidos'));
     }
@@ -38,15 +41,13 @@ class DgtejidoController extends Controller
 
     public function create()
     {
-        $tejido = telastejido::pluck('Diseño_Tej','id_Tej');
-        /*$color = DB::table('telastejidos')
-       ->select('color_Tej')
-       ->get();*/
-       //$color= DB::table('telastejidos')->select('Diseño_Tej', 'color_Tej')->get();
-       //$query = DB::table('telastejidos')->select('Diseño_Tej', 'id_Tej');
-       //$users = $query->addSelect('color_Tej')->get();
+        $tejido = telastejido::select( 
+                DB::raw("CONCAT(Diseño_Tej,'    ----    ',color_Tej) AS DisTej") ,'id_Tej')
+               ->pluck('DisTej', 'id_Tej');
 
-        return view('dg-tejido.create', compact('tejido'));
+        $proceso = procesos::pluck('Proceso', 'id_Procesos');
+
+        return view('dg-tejido.create', compact('tejido','proceso'));
 
     }
 
@@ -69,6 +70,7 @@ class DgtejidoController extends Controller
         $dg->nombreOpera_DG = $request->nombreOpera_DG;
         $dg->comentarios_DG = $request->comentarios_DG;
         $dg->id_Tej = $request->id_Tej;
+        $dg->id_Procesos = $request->id_Procesos;
 
         $dg->save();
 
@@ -104,6 +106,7 @@ class DgtejidoController extends Controller
         $dg->nombreOpera_DG = $request->nombreOpera_DG;
         $dg->comentarios_DG = $request->comentarios_DG;
         $dg->id_Tej = $request->id_Tej;
+        $dg->id_Procesos = $request->id_Procesos;
 
         $dg->save();
 

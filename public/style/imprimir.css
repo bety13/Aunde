@@ -1,0 +1,24 @@
+#foot, .he, .lin, .lin2, #no, #menu, #menuu, #registrar {
+	display: none !important;
+}
+
+body, .allE  {
+  float: none !important;
+  width: auto !important;
+  margin:  0 !important;
+  padding: 0 !important;
+}
+
+.allE {
+	background-color: white;
+	height: 50%;
+	top: 0px;
+}
+
+ .datoss, #n {
+	background-color: white;
+	top: 0px;
+}
+#ple {
+	background-color: white;
+}

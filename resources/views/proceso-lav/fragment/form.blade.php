@@ -44,7 +44,7 @@
 
 	{!! Form::label('disposicion_PLav', 'Disposicion') !!}
 	<!--{!! Form::text('disposicion_PLav', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_PLav', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_PLav', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesolav->disposicion_PLav, ['class' => 'form-control']  ) !!}
 	
 </div>
 

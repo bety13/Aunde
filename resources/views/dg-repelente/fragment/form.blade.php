@@ -1,35 +1,28 @@
 <div class="form-group">
 
-	{!! Form::label('id_Rep', 'ID Repelente') !!}
-	{!! Form::select('id_Rep', $repelente, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DGR', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DGR', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('id_Rep', 'Diseño Repelente') !!}
+	{!! Form::select('id_Rep', $repelente, ['' => 'Seleccione un diseño..!', ], ['class' => 'form-control']) !!}
 	
 </div>
 
 <div class="form-group">
 
-	{!! Form::label('horaE_DGR', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DGR', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('color_DGR', 'Confirme color de Diseño *') !!}
+	{!! Form::text('color_DGR', null, ['class' => 'form-control'] ) !!}
 	
-</div>-->
+</div>
+
+<div class="form-group">
+
+	{!! Form::label('id_Procesos', 'Tipo de Proceso') !!}
+	{!! Form::select('id_Procesos', $proceso, ['' => 'Seleccione un proceso..!', ], ['class' => 'form-control']) !!}
+	
+</div>
 
 <div class="form-group">
 
 	{!! Form::label('Npieza_DGR', 'Numero de pieza') !!}
 	{!! Form::text('Npieza_DGR', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('color_DGR', 'Color') !!}
-	{!! Form::text('color_DGR', null, ['class' => 'form-control'] ) !!}
 	
 </div>
 

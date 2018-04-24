@@ -65,7 +65,7 @@
 
 	{!! Form::label('disposicion_Ptum', 'Disposicion') !!}
 	<!--{!! Form::text('disposicion_Ptum', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_Ptum', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_Ptum', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesotum->disposicion_Ptum, ['class' => 'form-control']  ) !!}
 	
 </div>
 

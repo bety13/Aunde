@@ -44,8 +44,10 @@
 <div class="form-group">
 
 	{!! Form::label('disposicion_PTej', 'Disposicion') !!}
-	<!--{!! Form::text('disposicion_PTej', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_PTej', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	<!--{!! Form::text('disposicion_PTej', null, ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_PTej', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}-->
+
+	{!! Form::select('disposicion_PTej', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesotej->disposicion_PTej, ['class' => 'form-control']  ) !!}
 	
 </div>
 

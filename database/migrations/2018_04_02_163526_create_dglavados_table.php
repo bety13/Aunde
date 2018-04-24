@@ -31,6 +31,9 @@ class CreateDglavadosTable extends Migration
             $table->integer('id_Lav')->unsigned();
             $table->foreign('id_Lav')->references('id_Lav')->on('telaslavados');
 
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+
             $table->timestamps();
         });
     }

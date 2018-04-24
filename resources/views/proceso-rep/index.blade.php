@@ -65,7 +65,7 @@
 
 </style>
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2> <b> "PROCESOS DE ÁREA REPELENTE" <br> </b> <br> Control y Administracion de Datos </h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -81,7 +81,7 @@
 						
 </div>
 
-<div class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
+<div id="no" class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
 			<center>
 			<h4>Listado de todos los Procesos Repelente y registro de nuevos Procesos al sistema.</h4><br>
 			
@@ -110,14 +110,26 @@
 						
 </div>
 
-<h2>Listado de Procesos Area Repelente</h2> 
+<h2 id="no">Listado de Procesos Area Repelente</h2> 
+
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato de la evaluacion del proceso, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 		@include('clientes.fragment.info')
 		<div class="datoss" style="overflow-x: scroll; overflow-y: scroll; height: 300px;">
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
-		<table class="table table-hover table-striped">
+		<table id="mytable" class="table table-hover table-striped">
 			<thead>
 				<thead>
 					<tr>
@@ -146,7 +158,7 @@
 					    <th >Hora de Entrega</th>
 					    <th >Nombre del Analista</th>	
 					    <th >Comentarios</th>	
-					    <th colspan="2">&nbsp;</th>
+					    <th id="no" colspan="2">&nbsp;</th>
 					</tr>
 				</thead>
 			</thead>
@@ -180,7 +192,7 @@
 				 	<td> {{ $prorep->comentario_PRep }} </td>
 				 	
 				 	
-				 	<td>
+				 	<td id="no">
 				 		<a type="submit" class="btn btn-succes" href=" {{ route('procesorepelentes.edit', $prorep->id_PRep) }} " style="background: #009900; 
 											  border: 0;
 											  width: 100px;
@@ -194,7 +206,7 @@
 												Editar 
 											</a>
 				 	</td>
-				 	<td>
+				 	<td id="no">
 				 		<form action=" {{ route('procesorepelentes.destroy', $prorep->id_PRep) }} " method="POST" >
 				 			{{ csrf_field() }}
 				 			<input type="hidden" name="_method" value="DELETE">
@@ -384,13 +396,16 @@
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
 <label style="font-size: 16px; color: black; ">Distancia W :</label>&nbsp;&nbsp;
-{!! Form::text('distanciaW_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="distanciaW_PRep" class="flamaw" placeholder="0"><br><br>
 
 <label style="font-size: 16px; color: black; ">Tiempo W :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-{!! Form::text('tiempoW_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="tiempoW_PRep" class="flamaw" placeholder="0"><br><br>
 
-<label style="font-size: 16px; color: black; ">Velocidad W :</label>&nbsp;
-{!! Form::text('velocidadW_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
+<label style="font-size: 16px; color: black">Velocidad W :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label name="pPromedio_PRep" id="Velocidadw" style="font-size: 16px; color: black"></label><br>
+
+<label style="font-size: 16px; color: black; ">Confirmar Velocidad W :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="velocidadW_PRep" style="width: 83px;"><br><br>
 
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
@@ -399,13 +414,16 @@
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
 <label style="font-size: 16px; color: black; ">Distancia F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-{!! Form::text('distanciaF_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="distanciaF_PRep" class="flamaf" placeholder="0"><br><br>
 
 <label style="font-size: 16px; color: black; ">Tiempo F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-{!! Form::text('tiempoF_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="tiempoF_PRep" class="flamaf" placeholder="0"><br><br>
 
-<label style="font-size: 16px; color: black; ">Velocidad F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-{!! Form::text('velocidadF_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
+<label style="font-size: 16px; color: black">Velocidad F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label name="pPromedio_PRep" id="Velocidadf" style="font-size: 16px; color: black"></label><br>
+
+<label style="font-size: 16px; color: black; ">Confirmar Velocidad F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="velocidadF_PRep" style="width: 83px;"><br><br>
 
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
@@ -431,9 +449,6 @@
 <label style="font-size: 16px; color: black; ">Comentarios :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 {!! Form::text('comentario_PRep', null, ['class' => 'form-control'] ) !!}<br><br>
 
-
-</div>
-
 <!--     B    u     T      T      O      N    -->
 		<div class="form-group">
 			<button  
@@ -454,6 +469,10 @@
 			</button>
 		</div>
 
+</div>
+
+
+
 <!--    E  N  D         F  O  R  M      C  R  E  A  T  E      -->
 
 {!! Form::close() !!}
@@ -471,8 +490,10 @@
 <!--    S  C  R  I  P  T            J Q  U  E  R  Y   -->
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
-	 var total=0;
-$(document).ready(function() {
+
+/*             P    e    s    o          */
+	var total=0;
+	$(document).ready(function() {
     $('input.cantidad').blur(function() { calcular_total() });
     calcular_total();
 });
@@ -488,6 +509,51 @@ function calcular_total() {
     });
     $('label#total_monto_fiscal').html(total);
 }
+/*             P    e   s   o           */
+
+
+
+/*              W          */
+	var velo=0;
+	$(document).ready(function() {
+    $('input.flamaw').blur(function() { calcular_w() });
+    calcular_w();
+});
+function calcular_w() {
+    velo=0;
+    $('input.flamaw').each(function() {
+        var v=parseFloat($(this).val());
+        if (isNaN(v)) {
+            v=0;
+            $(this).val(0);
+        }
+        velo+=v/2;
+    });
+    $('label#Velocidadw').html(velo);
+}
+/*              W            */
+
+
+/*              F          */
+	var velof=0;
+	$(document).ready(function() {
+    $('input.flamaf').blur(function() { calcular_f() });
+    calcular_f();
+});
+function calcular_f() {
+    velof=0;
+    $('input.flamaf').each(function() {
+        var v=parseFloat($(this).val());
+        if (isNaN(v)) {
+            v=0;
+            $(this).val(0);
+        }
+        velof+=v/2;
+    });
+    $('label#Velocidadf').html(velof);
+}
+/*              F            */
+
 </script>
 
 <style>
@@ -508,6 +574,23 @@ function calcular_total() {
   
 }
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 
 <!--  E  N  D           S  C  R  I  P  T            J Q  U  E  R  Y   -->
 	

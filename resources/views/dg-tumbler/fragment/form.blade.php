@@ -1,35 +1,28 @@
 <div class="form-group">
 
-	{!! Form::label('id_Tum', 'ID tumbler') !!}
-	{!! Form::select('id_Tum', $Tum, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DGT', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DGT', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('id_Tum', 'Diseño tumbler') !!}
+	{!! Form::select('id_Tum', $Tum, ['' => 'Seleccione un diseño..!', ], ['class' => 'form-control']) !!}
 	
 </div>
 
 <div class="form-group">
 
-	{!! Form::label('horaE_DGT', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DGT', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('color_DGT', 'Confirme color de Diseño *') !!}
+	{!! Form::text('color_DGT', null, ['class' => 'form-control'] ) !!}
 	
-</div>-->
+</div>
+
+<div class="form-group">
+
+	{!! Form::label('id_Procesos', 'Tipo de Proceso') !!}
+	{!! Form::select('id_Procesos', $proceso, ['' => 'Seleccione un proceso..!', ], ['class' => 'form-control']) !!}
+	
+</div>
 
 <div class="form-group">
 
 	{!! Form::label('Npieza_DGT', 'Numero de pieza') !!}
 	{!! Form::text('Npieza_DGT', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('color_DGT', 'Color') !!}
-	{!! Form::text('color_DGT', null, ['class' => 'form-control'] ) !!}
 	
 </div>
 

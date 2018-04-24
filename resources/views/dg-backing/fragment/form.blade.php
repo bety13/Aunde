@@ -1,35 +1,28 @@
 <div class="form-group">
 
-	{!! Form::label('id_Back', 'ID Backing') !!}
-	{!! Form::select('id_Back', $back, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DGB', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DGB', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('id_Back', 'Diseño Backing') !!}
+	{!! Form::select('id_Back', $back, ['' => 'Seleccione un diseño..!', ], ['class' => 'form-control']) !!}
 	
 </div>
 
 <div class="form-group">
 
-	{!! Form::label('horaE_DGB', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DGB', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('color_DGB', 'Confirmar color de Diseño *') !!}
+	{!! Form::text('color_DGB', null, ['class' => 'form-control'] ) !!}
 	
-</div>-->
+</div>
+
+<div class="form-group">
+
+	{!! Form::label('id_Procesos', 'Tipo de Proceso') !!}
+	{!! Form::select('id_Procesos', $proceso, ['' => 'Seleccione un proceso..!', ], ['class' => 'form-control']) !!}
+	
+</div>
 
 <div class="form-group">
 
 	{!! Form::label('Npieza_DGB', 'Numero de pieza') !!}
 	{!! Form::text('Npieza_DGB', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('color_DGB', 'Color') !!}
-	{!! Form::text('color_DGB', null, ['class' => 'form-control'] ) !!}
 	
 </div>
 

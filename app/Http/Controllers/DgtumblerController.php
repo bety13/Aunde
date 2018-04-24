@@ -7,6 +7,7 @@ use App\dgtumbler;
 use App\Http\Requests\dgtumblerRequest;
 use DB;
 use App\telastumbler;
+use App\procesos;
 
 class DgtumblerController extends Controller
 {
@@ -15,9 +16,11 @@ class DgtumblerController extends Controller
     	/*$dgtumb = dgtumbler::orderBy('id_DGT','DESC')->paginate();*/
 
         $dgtumb = DB::table('dgtumblers')
-            ->join('telastumblers', 'dgtumblers.id_Tum', '=', 'telastumblers.id_Tum')
-            ->select('dgtumblers.*', 'telastumblers.Diseño_Tum')
+            ->join('telastumblers', 'telastumblers.id_Tum', '=', 'dgtumblers.id_Tum')
+            ->join('Procesos', 'Procesos.id_Procesos', '=', 'dgtumblers.id_Procesos')
+            ->select('dgtumblers.*', 'telastumblers.Diseño_Tum', 'Procesos.Proceso')
             ->get();
+
     	return view('dg-tumbler.index',compact('dgtumb'));
     }
 
@@ -35,8 +38,14 @@ class DgtumblerController extends Controller
 
     public function create()
     {
-        $Tum = telastumbler::pluck('Diseño_Tum', 'id_Tum');
-        return view('dg-tumbler.create', compact('Tum'));
+        //$Tum = telastumbler::pluck('Diseño_Tum', 'id_Tum');
+        $Tum = telastumbler::select( 
+                DB::raw("CONCAT(Diseño_Tum,' ---- ',color_Tum) AS DisTum") ,'id_Tum')
+               ->pluck('DisTum', 'id_Tum');
+      
+        $proceso = procesos::pluck('Proceso', 'id_Procesos');
+
+        return view('dg-tumbler.create', compact('Tum','proceso'));
     }
 
     ///
@@ -58,6 +67,7 @@ class DgtumblerController extends Controller
         $dgt->nombreOpera_DGT = $request->nombreOpera_DGT;
         $dgt->comentarios_DGT = $request->comentarios_DGT;
         $dgt->id_Tum = $request->id_Tum;
+        $dgt->id_Procesos = $request->id_Procesos;
 
         $dgt->save();
 
@@ -92,6 +102,7 @@ class DgtumblerController extends Controller
         $dgt->nombreOpera_DGT = $request->nombreOpera_DGT;
         $dgt->comentarios_DGT = $request->comentarios_DGT;
         $dgt->id_Tum = $request->id_Tum;
+        $dgt->id_Procesos = $request->id_Procesos;
 
         $dgt->save();
 

@@ -9,8 +9,9 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.4.0",
-        "laracasts/flash" : "~1.3"
+        "laravelcollective/html": "^5.4.0",//Intalacion para general formulario de Laravel
+        "laracasts/flash" : "~1.3",        //Intalacion para generar mensajes 
+        "barryvdh/laravel-dompdf": "0.7.*" //Instalacion para generar un archivo PDF 
     },
     "require-dev": {
         "filp/whoops": "^2.0",

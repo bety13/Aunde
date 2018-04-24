@@ -35,7 +35,7 @@ class procesotermofijado extends Model
 						   'horaE_PTermo',
 						   'analista_PTermo',
 						   'comentario_PTermo',
-						   'id_Ramas',
+						   'id_Procesos',
 						   ];
 
 
@@ -43,9 +43,9 @@ class procesotermofijado extends Model
 
 
 
-    public function procesoramas()
+      public function procesos()
     {
-        return $this->belongsTo('App\procesoramas');
+        return $this->belongsTo('App\procesos');
     }
 
 

@@ -31,6 +31,9 @@ class CreateDgtermofijadosTable extends Migration
             $table->integer('id_Termo')->unsigned();
             $table->foreign('id_Termo')->references('id_Termo')->on('telastermofijados');
 
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+
             $table->timestamps();
         });
     }

@@ -37,6 +37,6 @@ class dgtermofijado extends Model
 
     public function procesos()
     {
-        return $this->hasMany('App\procesos');
+        return $this->belongsToMany('App\procesos');
     }
 }

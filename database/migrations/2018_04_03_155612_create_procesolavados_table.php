@@ -27,8 +27,8 @@ class CreateProcesolavadosTable extends Migration
             $table->string('analista_PLav');
             $table->string('comentario_PLav')->nullable();
 
-            $table->integer('id_Ramas')->unsigned()->nullable();
-            $table->foreign('id_Ramas')->references('id_Ramas')->on('procesoramas');
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
 
             $table->timestamps();
         });

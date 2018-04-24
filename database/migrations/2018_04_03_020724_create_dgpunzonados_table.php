@@ -31,6 +31,9 @@ class CreateDgpunzonadosTable extends Migration
             $table->integer('id_Punzo')->unsigned();
             $table->foreign('id_Punzo')->references('id_Punzo')->on('telaspunzonados');
 
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+
             $table->timestamps();
         });
     }

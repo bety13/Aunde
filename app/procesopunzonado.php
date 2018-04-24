@@ -22,7 +22,7 @@ class procesopunzonado extends Model
 						   'horaE_PPunzo',
 						   'analista_PPunzo',
 						   'comentario_PPunzo',
-						   'id_Ramas',
+						   'id_Procesos',
 						   ];
 
 
@@ -32,9 +32,9 @@ class procesopunzonado extends Model
 
 
 
-    public function procesoramas()
+      public function procesos()
     {
-        return $this->belongsTo('App\procesoramas');
+        return $this->belongsTo('App\procesos');
     }
 
      //--------------------------------------------

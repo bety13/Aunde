@@ -65,7 +65,7 @@
 
 </style>
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2> <b> "PROCESOS DE ÁREA BONDEO" <br> </b> <br> Control y Administracion de Datos </h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -81,7 +81,7 @@
 						
 </div>
 
-<div class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
+<div id="no" class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
 			<center>
 			<h4>Listado de todos los Procesos Bondeo y registro de nuevos Procesos al sistema.</h4><br>
 			
@@ -110,14 +110,30 @@
 						
 </div>
 
-<h2>Listado de Procesos Area Bondeo</h2> 
+<h2 id="no">Listado de Procesos Area Bondeo</h2> 
+
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato de la evaluacion del proceso, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+
+			<form>
+				<input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+			</form>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 		@include('clientes.fragment.info')
 		<div class="datoss" style="overflow: scroll; visibility: visible;">
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
-		<table class="table table-hover table-striped">
+		<table id="mytable" class="table table-hover table-striped">
 			<thead>
 				<thead>
 					<tr>
@@ -156,7 +172,7 @@
 					    <th >Hora de Entrega</th>
 					    <th >Nombre del Analista</th>	
 					    <th >Comentarios</th>	
-					    <th >&nbsp;</th>
+					    <th id="no" >&nbsp;</th>
 					</tr>
 				</thead>
 			</thead>
@@ -201,7 +217,7 @@
 
 				 	
 				 	
-				 	<td>
+				 	<td id="no" >
 				 		<a type="submit" class="btn btn-succes" href=" {{ route('procesobondeos.edit', $probon->id_PBondeo) }} " style="background: #009900; 
 											  border: 0;
 											  width: 100px;
@@ -215,7 +231,7 @@
 												Editar 
 											</a>
 				 	</td>
-				 	<td>
+				 	<td id="no" >
 				 		<form action=" {{ route('procesobondeos.destroy', $probon->id_PBondeo) }} " method="POST" >
 				 			{{ csrf_field() }}
 				 			<input type="hidden" name="_method" value="DELETE">
@@ -387,17 +403,17 @@
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
 <label style="font-size: 16px; color: black">Espesor 1 :</label>&nbsp;&nbsp; &nbsp;
-<input type="text" name="espesor1_PBondeo" class="cantidad" placeholder="0"><br><br>
+<input type="text" name="espesor1_PBondeo" class="espesor" placeholder="0"><br><br>
 
 <label style="font-size: 16px; color: black">Espesor 2 :</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="text" name="espesor2_PBondeo" class="cantidad" placeholder="0"><br><br>
+<input type="text" name="espesor2_PBondeo" class="espesor" placeholder="0"><br><br>
 
 <label style="font-size: 16px; color: black">Espesor 3 :</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="text" name="espesor3_PBondeo" class="cantidad" placeholder="0"><br>
+<input type="text" name="espesor3_PBondeo" class="espesor" placeholder="0"><br>
 <br/>
 
 <label style="font-size: 14.5px; color: black">Espesor Promedio :</label>&nbsp;&nbsp;&nbsp;&nbsp;
-<label name="pPromedio_PTermo" id="total_monto_fiscal" style="font-size: 16px; color: black"></label><br>
+<label name="pPromedio_PTermo" id="espesor" style="font-size: 16px; color: black"></label><br>
 
 <label style="font-size: 14px; color: black; ">Confirmar Espesor Promedio :</label>&nbsp;&nbsp;
 <input type="text" name="espesorProm_PBondeo" style="width: 83px;"><br><br>
@@ -437,24 +453,30 @@
 
 
 <label style="font-size: 16px; color: black; ">Distancia W :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	{!! Form::text('distanciaW_PBondeo', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="distanciaW_PBondeo" class="flamaw" placeholder="0"><br><br>
 
 <label style="font-size: 16px; color: black; ">Tiempo W :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	{!! Form::text('tiempoW_PBondeo', null, ['class' => 'form-control'] ) !!}<br><br>
+	<input type="text" name="tiempoW_PBondeo" class="flamaw" placeholder="0"><br><br>
+
+<label style="font-size: 16px; color: black">Velocidad W :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+<label name="velocidadW_PTermo" id="Velocidadw" style="font-size: 16px; color: black"></label><br>
 
 <label style="font-size: 16px; color: black; ">Velocidad W :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	{!! Form::text('velocidadW_PBondeo', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="velocidadW_PBondeo" style="width: 83px;"><br><br>
 
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
 <label style="font-size: 16px; color: black; ">Distancia F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	{!! Form::text('distanciaF_PBondeo', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="distanciaF_PBondeo" class="flamaf" placeholder="0"><br><br>
 
 <label style="font-size: 16px; color: black; ">Tiempo F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	{!! Form::text('tiempoF_PBondeo', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="tiempoF_PBondeo" class="flamaf" placeholder="0"><br><br>
+
+<label style="font-size: 16px; color: black">Velocidad F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label name="" id="Velocidadf" style="font-size: 16px; color: black"></label><br>
 
 <label style="font-size: 16px; color: black; ">Velocidad F :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	{!! Form::text('velocidadF_PBondeo', null, ['class' => 'form-control'] ) !!}<br><br>
+<input type="text" name="velocidadF_PBondeo" style="width: 83px;"><br><br>
 
 <div style="background-color: white; height: 3px; width: 95%"></div><br>
 
@@ -554,6 +576,69 @@ function calcular_total() {
     });
     $('label#total_monto_fiscal').html(total);
 }
+
+/*        ESPESOR         */
+	var velo=0;
+	$(document).ready(function() {
+    $('input.espesor').blur(function() { calcular_espesor() });
+    calcular_w();
+});
+function calcular_espesor() {
+    velo=0;
+    $('input.espesor').each(function() {
+        var v=parseFloat($(this).val());
+        if (isNaN(v)) {
+            v=0;
+            $(this).val(0);
+        }
+        velo+=v/3;
+    });
+    $('label#espesor').html(velo);
+}
+/*         ESPESOR           */
+
+
+/*              W          */
+	var velo=0;
+	$(document).ready(function() {
+    $('input.flamaw').blur(function() { calcular_w() });
+    calcular_w();
+});
+function calcular_w() {
+    velo=0;
+    $('input.flamaw').each(function() {
+        var v=parseFloat($(this).val());
+        if (isNaN(v)) {
+            v=0;
+            $(this).val(0);
+        }
+        velo+=v/2;
+    });
+    $('label#Velocidadw').html(velo);
+}
+/*              W            */
+
+
+/*              F          */
+	var velof=0;
+	$(document).ready(function() {
+    $('input.flamaf').blur(function() { calcular_f() });
+    calcular_f();
+});
+function calcular_f() {
+    velof=0;
+    $('input.flamaf').each(function() {
+        var v=parseFloat($(this).val());
+        if (isNaN(v)) {
+            v=0;
+            $(this).val(0);
+        }
+        velof+=v/2;
+    });
+    $('label#Velocidadf').html(velof);
+}
+/*              F            */
+
 </script>
 
 <style>
@@ -574,6 +659,23 @@ function calcular_total() {
   
 }
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 
 <!--  E  N  D           S  C  R  I  P  T            J Q  U  E  R  Y   -->
 	

@@ -65,7 +65,7 @@
 
 </style>
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2> <b> "DATOS GENERALES BONDEO" <br> </b> <br> Control y Administracion de Datos </h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -81,7 +81,7 @@
 						
 </div>
 
-<div class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
+<div id="no" class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
 			<center>
 			<h4>Listado de todos los Datos Generales Bondeo y registro de nuevas datos al sistema.</h4><br>
 			
@@ -110,18 +110,30 @@
 						
 </div>
 
-<h2>Listado de Datos Generales Bondeo</h2>
+<h2 id="no">Listado de Datos Generales Bondeo</h2>
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 		@include('clientes.fragment.info')
 		<div class="datoss" style="overflow: scroll; visibility: visible;">
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
-		<table class="table table-hover table-striped">
+		<table id="mytable" class="table table-hover table-striped">
 			<thead>
 				<thead>
 					<tr>
 						<th >Diseño Bondeo</th>
+						<th>Proceso Asignado</th>
 					    <th >Fecha y Hora de Entrada</th>
 					    <!--<th >Hora de Entrada</th>-->
 					    <th >Numero de pieza</th>
@@ -135,7 +147,7 @@
 					    <th >Nombre de Operador</th>	
 					    <th >Comentarios</th>	
 					    
-					    <th >&nbsp;</th>
+					    <th colspan="2" id="no">&nbsp;</th>
 					</tr>
 				</thead>
 			</thead>
@@ -143,6 +155,7 @@
 				 @foreach($dgbondeos as $bon)
 				 <tr>
 				 	<td> {{ $bon->Diseño_Bondeo }} </td>
+				 	<td>{{ $bon->Proceso }}</td>
 				 	<td style="font-size: 12px;"> {{ $bon->updated_at }} </td>
 				 	<!--<td> {{ $bon->horaE_DGBO }} </td>-->
 				 	<td> {{ $bon->Npieza_DGBO }} </td>
@@ -158,7 +171,7 @@
 				 	
 				 	
 				 	
-				 	<td>
+				 	<td id="no">
 				 		<a type="submit" class="btn btn-succes" href=" {{ route('dgbondeos.edit', $bon->id_DGBO) }} " style="background: #009900; 
 											  border: 0;
 											  width: 100px;
@@ -172,7 +185,7 @@
 												Editar 
 											</a>
 				 	</td>
-				 	<td>
+				 	<td id="no">
 				 		<form action=" {{ route('dgbondeos.destroy', $bon->id_DGBO) }} " method="POST" >
 				 			{{ csrf_field() }}
 				 			<input type="hidden" name="_method" value="DELETE">
@@ -193,6 +206,22 @@
 			</tbody>
 		</table>
 	</div>
-	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 
 @endsection

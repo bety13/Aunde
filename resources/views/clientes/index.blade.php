@@ -1,7 +1,7 @@
 
 @extends('layouts.main')
 @section('content')
-
+<!--{!! Html::style('assets/css/pdf.css') !!}-->
 
 <style type="text/css">
 	th {
@@ -14,7 +14,7 @@
 </style>
 
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2>"Control y Administracion de Clientes"</h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -23,7 +23,7 @@
 
 
 
-<div class="datoss" style="background-color: #e6e6e6">
+<div id="no" class="datoss" style="background-color: #e6e6e6">
 			<center>
 			<h4>Listado de todos los clientes y registra nuevos clientes al sistema.</h4><br>
 			
@@ -42,6 +42,17 @@
 			  &nbsp;&nbsp;&nbsp;&nbsp;Nuevo Cliente</a></center>
 </div>
 
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato del cliente, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar cliente...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 
 	<div class="col-sm-8">
@@ -50,7 +61,7 @@
 		<center><div class="lin" style="width: 300px;"></div></center><br>
 		@include('clientes.fragment.info')
 
-		<table class="table table-striped" border="1" style="margin-left: auto;
+		<table id="mytable" class="table table-striped" border="1" style="margin-left: auto;
   margin-right: auto;">
 			<thead>
 				<tr>
@@ -58,7 +69,7 @@
 					<th>Numero de cliente</th>
 					<th>Nombre del cliente</th>
 					<th>Direccion</th>
-					<th colspan="3">&nbsp;</th>
+					<th id="no" colspan="3">&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -70,7 +81,7 @@
 				 	<td> {{ $clien->direccionC }} </td>
 				 	
 				 	<td>
-				 		<a href=" {{ route('clientes.edit', $clien->id_Clien) }} " type="submit" class="btn btn-succes" style="background: #009900; 
+				 		<a id="no" href=" {{ route('clientes.edit', $clien->id_Clien) }} " type="submit" class="btn btn-succes" style="background: #009900; 
 											  border: 0;
 											  width: 100px;
 											  padding: 10px;
@@ -103,6 +114,25 @@
 			</tbody>
 		</table>
 		{!! $cliente->render() !!}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 	</div>
 
 @endsection

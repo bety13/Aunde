@@ -128,7 +128,7 @@
 
 	{!! Form::label('disposicion_PBack', 'Disposicion ') !!}
 	<!--{!! Form::text('disposicion_PBack', null, ['class' => 'form-control'] ) !!}-->
-	{!! Form::select('disposicion_PBack', ['' => 'Seleccionar', 'Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'] , ['class' => 'form-control'] ) !!}
+	{!! Form::select('disposicion_PBack', ['Liberado' => 'Liberado', 'Rechazado' => 'Rechazado', 'Segunda calidad' => 'Segunda Calidad'], $procesoback->disposicion_PBack, ['class' => 'form-control']  ) !!}
 	
 </div>
 

@@ -5,19 +5,6 @@
 	
 </div>
 
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DG', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DG', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('horaE_DG', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DG', null, ['class' => 'form-control'] ) !!}
-	
-</div>-->
 
 <div class="form-group">
 

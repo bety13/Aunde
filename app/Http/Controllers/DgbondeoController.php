@@ -7,6 +7,7 @@ use App\dgbondeo;
 use App\Http\Requests\dgbondeoRequest;
 use DB;
 use App\telasbondeo;
+use App\procesos;
 
 class DgbondeoController extends Controller
 {
@@ -15,8 +16,9 @@ class DgbondeoController extends Controller
     	/*$dgbondeos = dgbondeo::orderBy('id_DGBO','DESC')->paginate();*/
 
          $dgbondeos = DB::table('dgbondeos')
-            ->join('telasbondeos', 'dgbondeos.id_Bondeo', '=', 'telasbondeos.id_Bondeo')
-            ->select('dgbondeos.*', 'telasbondeos.Diseño_Bondeo')
+            ->join('telasbondeos', 'telasbondeos.id_Bondeo', '=', 'dgbondeos.id_Bondeo')
+            ->join('Procesos', 'Procesos.id_Procesos', '=', 'dgbondeos.id_Procesos')
+            ->select('dgbondeos.*', 'telasbondeos.Diseño_Bondeo', 'Procesos.Proceso')
             ->get();
     	return view('dg-bondeo.index',compact('dgbondeos'));
     }
@@ -35,8 +37,14 @@ class DgbondeoController extends Controller
 
     public function create()
     {
-        $bondeo = telasbondeo::pluck('Diseño_Bondeo', 'id_Bondeo');
-        return view('dg-bondeo.create', compact('bondeo'));
+        //$bondeo = telasbondeo::pluck('Diseño_Bondeo', 'id_Bondeo');
+        $bondeo = telasbondeo::select( 
+                DB::raw("CONCAT(Diseño_Bondeo,' ---- ',color_Bondeo) AS DisBondeo") ,'id_Bondeo')
+               ->pluck('DisBondeo', 'id_Bondeo');
+      
+        $proceso = procesos::pluck('Proceso', 'id_Procesos');
+
+        return view('dg-bondeo.create', compact('bondeo','proceso'));
     }
 
     ///
@@ -58,6 +66,7 @@ class DgbondeoController extends Controller
         $dgbonde->nombreOpera_DGBO = $request->nombreOpera_DGBO;
         $dgbonde->comentarios_DGBO = $request->comentarios_DGBO;
         $dgbonde->id_Bondeo = $request->id_Bondeo;
+        $dgbonde->id_Procesos = $request->id_Procesos;
 
         $dgbonde->save();
 
@@ -92,6 +101,7 @@ class DgbondeoController extends Controller
         $dgbonde->nombreOpera_DGBO = $request->nombreOpera_DGBO;
         $dgbonde->comentarios_DGBO = $request->comentarios_DGBO;
         $dgbonde->id_Bondeo = $request->id_Bondeo;
+        $dgbonde->id_Procesos = $request->id_Procesos;
 
         $dgbonde->save();
 

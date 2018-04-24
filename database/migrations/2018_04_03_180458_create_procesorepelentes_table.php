@@ -39,8 +39,8 @@ class CreateProcesorepelentesTable extends Migration
             $table->string('analista_PRep');
             $table->string('comentario_PRep')->nullable();
 
-            $table->integer('id_Ramas')->unsigned()->nullable();
-            $table->foreign('id_Ramas')->references('id_Ramas')->on('procesoramas');
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
 
             $table->timestamps();
         

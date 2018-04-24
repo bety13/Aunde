@@ -1,35 +1,28 @@
 <div class="form-group">
 
-	{!! Form::label('id_Bondeo', 'ID BONDEO') !!}
-	{!! Form::select('id_Bondeo', $bondeo, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<!--<div class="form-group">
-
-	{!! Form::label('fechaE_DGBO', 'Fecha de Entrada') !!}
-	{!! Form::text('fechaE_DGBO', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('id_Bondeo', 'Diseño Bondeo') !!}
+	{!! Form::select('id_Bondeo', $bondeo, ['' => 'Seleccione un diseño..!', ], ['class' => 'form-control']) !!}
 	
 </div>
 
 <div class="form-group">
 
-	{!! Form::label('horaE_DGBO', 'Hora de entrada') !!}
-	{!! Form::text('horaE_DGBO', null, ['class' => 'form-control'] ) !!}
+	{!! Form::label('color_DGBO', 'Confirme color de Diseño *') !!}
+	{!! Form::text('color_DGBO', null, ['class' => 'form-control'] ) !!}
 	
-</div>-->
+</div>
+
+<div class="form-group">
+
+	{!! Form::label('id_Procesos', 'Tipo de Proceso') !!}
+	{!! Form::select('id_Procesos', $proceso, ['' => 'Seleccione un proceso..!', ], ['class' => 'form-control']) !!}
+	
+</div>
 
 <div class="form-group">
 
 	{!! Form::label('Npieza_DGBO', 'Numero de pieza') !!}
 	{!! Form::text('Npieza_DGBO', null, ['class' => 'form-control'] ) !!}
-	
-</div>
-
-<div class="form-group">
-
-	{!! Form::label('color_DGBO', 'Color') !!}
-	{!! Form::text('color_DGBO', null, ['class' => 'form-control'] ) !!}
 	
 </div>
 

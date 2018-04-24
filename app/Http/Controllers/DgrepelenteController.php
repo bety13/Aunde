@@ -7,17 +7,20 @@ use App\dgrepelente;
 use App\Http\Requests\dgrepelenteRequest;
 use DB;
 use App\telasrepelente;
+use App\procesos;
 
 class DgrepelenteController extends Controller
 {
     public function index()
-    {
+    { 
     	/*$dgrepe = dgrepelente::orderBy('id_DGR','DESC')->paginate();*/
 
         $dgrepe = DB::table('dgrepelentes')
-            ->join('telasrepelentes', 'dgrepelentes.id_Rep', '=', 'telasrepelentes.id_Rep')
-            ->select('dgrepelentes.*', 'telasrepelentes.Diseño_Rep')
+            ->join('telasrepelentes', 'telasrepelentes.id_Rep', '=', 'dgrepelentes.id_Rep')
+            ->join('Procesos', 'Procesos.id_Procesos', '=', 'dgrepelentes.id_Procesos')
+            ->select('dgrepelentes.*', 'telasrepelentes.Diseño_Rep', 'Procesos.Proceso')
             ->get();
+
     	return view('dg-repelente.index',compact('dgrepe'));
     }
 
@@ -35,8 +38,14 @@ class DgrepelenteController extends Controller
 
     public function create()
     {
-        $repelente = telasrepelente::pluck('Diseño_Rep', 'id_Rep');
-        return view('dg-repelente.create', compact('repelente'));
+        //$repelente = telasrepelente::pluck('Diseño_Rep', 'id_Rep');
+        $repelente = telasrepelente::select( 
+                DB::raw("CONCAT(Diseño_Rep,' ---- ',color_Rep) AS DisRep") ,'id_Rep')
+               ->pluck('DisRep', 'id_Rep');
+      
+        $proceso = procesos::pluck('Proceso', 'id_Procesos');
+
+        return view('dg-repelente.create', compact('repelente','proceso'));
     }
 
     ///
@@ -58,6 +67,7 @@ class DgrepelenteController extends Controller
         $dgrep->nombreOpera_DGR = $request->nombreOpera_DGR;
         $dgrep->comentarios_DGR = $request->comentarios_DGR;
         $dgrep->id_Rep = $request->id_Rep;
+        $dgrep->id_Procesos = $request->id_Procesos;
 
         $dgrep->save();
 
@@ -92,6 +102,7 @@ class DgrepelenteController extends Controller
         $dgrep->nombreOpera_DGR = $request->nombreOpera_DGR;
         $dgrep->comentarios_DGR = $request->comentarios_DGR;
         $dgrep->id_Rep = $request->id_Rep;
+        $dgrep->id_Procesos = $request->id_Procesos;
 
         $dgrep->save();
 

@@ -7,6 +7,7 @@ use App\dglavado;
 use App\Http\Requests\dglavadoRequest;
 use DB;
 use App\telaslavado;
+use App\procesos;
 
 
 class DglavadoController extends Controller
@@ -17,8 +18,9 @@ class DglavadoController extends Controller
     */
 
         $dglavados = DB::table('dglavados')
-            ->join('telaslavados', 'dglavados.id_Lav', '=', 'dglavados.id_Lav')
-            ->select('dglavados.*', 'telaslavados.Diseño_Lav')
+            ->join('telaslavados', 'telaslavados.id_Lav', '=', 'dglavados.id_Lav')
+            ->join('Procesos', 'Procesos.id_Procesos', '=', 'dglavados.id_Procesos')
+            ->select('dglavados.*', 'telaslavados.Diseño_Lav', 'Procesos.Proceso')
             ->get();
 
     	return view('dg-lavado.index',compact('dglavados'));
@@ -38,8 +40,14 @@ class DglavadoController extends Controller
 
     public function create()
     {
-        $lavado = telaslavado::pluck('Diseño_Lav', 'id_Lav');
-        return view('dg-lavado.create', compact('lavado'));
+        //$lavado = telaslavado::pluck('Diseño_Lav', 'id_Lav');
+        $lavado = telaslavado::select( 
+                DB::raw("CONCAT(Diseño_Lav,' ---- ',color_Lav) AS DisLav") ,'id_Lav')
+               ->pluck('DisLav', 'id_Lav');
+      
+        $proceso = procesos::pluck('Proceso', 'id_Procesos');
+
+        return view('dg-lavado.create', compact('lavado','proceso'));
     }
 
     ///
@@ -61,6 +69,7 @@ class DglavadoController extends Controller
         $dgl->nombreOpera_DGL = $request->nombreOpera_DGL;
         $dgl->comentarios_DGL = $request->comentarios_DGL;
         $dgl->id_Lav = $request->id_Lav;
+        $dgl->id_Procesos = $request->id_Procesos;
 
         $dgl->save();
 
@@ -96,6 +105,7 @@ class DglavadoController extends Controller
         $dgl->nombreOpera_DGL = $request->nombreOpera_DGL;
         $dgl->comentarios_DGL = $request->comentarios_DGL;
         $dgl->id_Lav = $request->id_Lav;
+        $dgl->id_Procesos = $request->id_Procesos;
 
         $dgl->save();
 

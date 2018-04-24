@@ -32,4 +32,9 @@ class dgbondeo extends Model
     {
         return $this->belongsTo('App\telasbondeos');
     }
+
+    public function procesos()
+    {
+        return $this->belongsToMany('App\procesos');
+    }
 }

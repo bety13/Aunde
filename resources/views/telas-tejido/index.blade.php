@@ -66,7 +66,7 @@
 
 </style>
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2>"Control y Administracion de Telas TEJIDO"</h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -82,7 +82,7 @@
 						
 </div>
 
-<div class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
+<div id="no" class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
 			<center>
 			<h4>Listado de todas las Telas de area Tejido y registro de nuevas telas al sistema.</h4><br>
 			
@@ -111,15 +111,29 @@
 						
 </div>
 
-<h2>Listado de Telas Tejido</h2>
+<h2 id="no">Listado de Telas Tejido</h2>
+
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato de la tela, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar tela...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 		
 		@include('clientes.fragment.info')
-		<div class="datoss" style="overflow: scroll; visibility: visible;">
+		<div id="over" class="datoss" style="overflow: scroll; visibility: visible;">
+		<a href="javascript:imprSelec('muestra')">Imprimir Tabla</a>
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
+<div id="muestra">
 
-		<table class="table table-striped" border="1">
+		<table id="mytable" class="table table-striped" border="1">
 			<thead>
 				<thead>
 					<tr>
@@ -132,7 +146,7 @@
 					    <th colspan="3">Limite Superior</th>	
 					    <th colspan="3">Limite Inferior</th>
 					    
-					    <th colspan="2"
+					    <th id="no" colspan="2"
 					    	rowspan="2">&nbsp;</th>
 					</tr>
 					<tr>
@@ -172,8 +186,9 @@
 				 	<td> {{ $tejid->LIE_anchoU_Tej }} </td>
 				 	<td> {{ $tejid->LIE_apari_Tej }} </td>
 				 	
-				 	
-				 	<td>
+</div> 	
+	<div id="cada">
+				 	<td id="no">
 				 		
 
 				 		<a  type="submit" class="btn btn-succes" href=" {{ route('telastejidos.edit', $tejid->id_Tej) }} "
@@ -191,7 +206,7 @@
 											</a>
 
 				 	</td>
-				 	<td>
+				 	<td id="no">
 				 		<form action=" {{ route('telastejidos.destroy', $tejid->id_Tej) }} " method="POST" >
 				 			{{ csrf_field() }}
 				 			<input type="hidden" name="_method" value="DELETE">
@@ -209,12 +224,45 @@
 									Borrar</button>
 				 		</form>
 				 	</td>
+				 	
 				 </tr>
 				 @endforeach
 			</tbody>
+			</div>
 		</table>
-		
+
 	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
+
+<script type="text/javascript">
+function imprSelec(muestra)
+{
+	var ficha=document.getElementById(muestra);
+	var ventimp=window.open(' ','popimpr');
+	ventimp.document.write(ficha.innerHTML);
+	ventimp.document.close();
+	ventimp.print();
+	ventimp.close();
+
+
+}
+</script>
 	
 
 @endsection

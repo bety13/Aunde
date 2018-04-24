@@ -65,7 +65,7 @@
 
 </style>
 
-<div class="section-heading">
+<div id="no" class="section-heading">
 	<h2> <b> "RE - PROCESOS DE ÁREA BACKING" <br> </b> <br> Control y Administracion de Datos </h2>
 </div>
 	<center><div class="lin" style="width: 300px;"></div></center>
@@ -81,7 +81,7 @@
 						
 </div>
 
-<div class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
+<div id="no" class="datoss" style="background-color: #e6e6e6; float:left; width: 63% ">
 			<center>
 			<h4>Listado de todos los Re - Procesos Backing y registro de nuevos Procesos al sistema.</h4><br>
 			
@@ -110,14 +110,26 @@
 						
 </div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-<h2>Listado de Re - Procesos Area Backing</h2> 
+<h2 id="no">Listado de Re - Procesos Area Backing</h2> 
+
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div id="no" class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato de la evaluacion del Re - proceso, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 		@include('clientes.fragment.info')
 		<div class="datoss" style="overflow: scroll; visibility: visible;">
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
-		<table class="table table-hover table-striped">
+		<table id="mytable" class="table table-hover table-striped">
 			<thead>
 				<thead>
 					<tr>
@@ -145,7 +157,7 @@
 					    <th >Nombre del Analista</th>	
 					    <th >Comentarios</th>	
 					    <th >ID </th>
-					    <th >&nbsp;</th>
+					    <th id="no">&nbsp;</th>
 					</tr>
 				</thead>
 			</thead>
@@ -178,7 +190,7 @@
 				 	<td> {{ $reba->id_PBack }} </td>
 				 	
 				 	
-				 	<td>
+				 	<td id="no">
 				 		<a type="submit" class="btn btn-succes" href=" {{ route('reprocesobackings.edit', $reba->id_ReBack) }} " style="background: #009900; 
 											  border: 0;
 											  width: 100px;
@@ -192,7 +204,7 @@
 												Editar 
 											</a>
 				 	</td>
-				 	<td>
+				 	<td id="no">
 				 		<form action=" {{ route('reprocesobackings.destroy', $reba->id_ReBack) }} " method="POST" >
 				 			{{ csrf_field() }}
 				 			<input type="hidden" name="_method" value="DELETE">
@@ -214,6 +226,22 @@
 		</table>
 		{!! $rebacki->render() !!}
 	</div>
-	
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 
 @endsection

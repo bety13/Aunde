@@ -34,7 +34,7 @@ class procesorepelente extends Model
 						   'horaE_PRep',
 						   'analista_PRep',
 						   'comentario_PRep',
-						   'id_Ramas',
+						   'id_Procesos',
 						   ];
 
 
@@ -42,9 +42,9 @@ class procesorepelente extends Model
 
 
 
-    public function procesoramas()
+      public function procesos()
     {
-        return $this->belongsTo('App\procesoramas');
+        return $this->belongsTo('App\procesos');
     }
 
  //--------------------------------------------

@@ -31,6 +31,9 @@ class CreateDgbondeosTable extends Migration
             $table->integer('id_Bondeo')->unsigned();
             $table->foreign('id_Bondeo')->references('id_Bondeo')->on('telasbondeos');
 
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+
             $table->timestamps();
         });
     }

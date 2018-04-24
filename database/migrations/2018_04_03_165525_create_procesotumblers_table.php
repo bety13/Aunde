@@ -30,8 +30,8 @@ class CreateProcesotumblersTable extends Migration
             $table->string('analista_PTum');
             $table->string('comentario_PTum')->nullable();
 
-            $table->integer('id_Ramas')->unsigned()->nullable();
-            $table->foreign('id_Ramas')->references('id_Ramas')->on('procesoramas');
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
             $table->timestamps();
         });
     }

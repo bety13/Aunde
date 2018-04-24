@@ -109,19 +109,31 @@
 	</ul>
 						
 </div>
-
+&nbsp;&nbsp;&nbsp;
 <h2>Listado de Datos Generales Repelente</h2>
+<!-- B  U  S  C  A  D  O  R              C  L  I  E  N  T  E  S      -->
+
+<div class="datoss" style="background-color: #e6e6e6">
+			<center>
+			<h4>Ingresa algun dato, posteriormente se realizará la busqueda adecuada.</h4><br>
+			<input type="text" class="form-control pull-right" style="width:20%" id="search" placeholder="Buscar...">
+			<img src="buscar.png" style="width: 27px">
+			</center>
+</div>
+
+<!-- E   N    D         B   U   S   C   A   D   O   R       -->
 
 		@include('clientes.fragment.info')
 		<div class="datoss" style="overflow: scroll; visibility: visible;">
 
 		<div class="lin"></div>
 		<div class="lin2"></div><br>
-		<table class="table table-hover table-striped">
+		<table id="mytable" class="table table-hover table-striped">
 			<thead>
 				<thead>
 					<tr>
 						<th >Diseño Repelente</th>
+						<th>Proceso Asignado</th>
 					    <th >Fecha y Hora de Entrada</th>
 					    <!--<th >Hora de Entrada</th>-->
 					    <th >Numero de pieza</th>
@@ -134,7 +146,7 @@
 					    <th >Codigo de producto terinado </th>
 					    <th >Nombre de Operador</th>	
 					    <th >Comentarios</th>
-					    <th >&nbsp;</th>
+					    <th colspan="2">&nbsp;</th>
 					</tr>
 				</thead>
 			</thead>
@@ -142,6 +154,7 @@
 				 @foreach($dgrepe as $rep)
 				 <tr>
 				 	<td> {{ $rep->Diseño_Rep }} </td>
+				 	<td>{{ $rep->Proceso }}</td>
 				 	<td style="font-size: 12px;"> {{ $rep->updated_at }} </td>
 				 	<!--<td> {{ $rep->horaE_DGR }} </td>-->
 				 	<td> {{ $rep->Npieza_DGR }} </td>
@@ -192,6 +205,23 @@
 			</tbody>
 		</table>
 	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+ // Write on keyup event of keyword input element
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+</script>
 	
 
 @endsection

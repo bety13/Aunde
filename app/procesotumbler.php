@@ -25,7 +25,7 @@ class procesotumbler extends Model
 						   'horaE_PTum',
 						   'analista_PTum',
 						   'comentario_PTum',
-						   'id_Ramas',
+						   'id_Procesos',
 						   ];
 
 
@@ -33,7 +33,10 @@ class procesotumbler extends Model
 
 //---------------------------Uno a Uno-----------------------------------
 
-
+	  public function procesos()
+    {
+        return $this->belongsTo('App\procesos');
+    }
 
 
     //-----------------------------------------------

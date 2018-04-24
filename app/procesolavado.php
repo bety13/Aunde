@@ -23,7 +23,7 @@ class procesolavado extends Model
 						   'horaE_PLav',
 						   'analista_PLav',
 						   'comentario_PLav',
-						   'id_Ramas',
+						   'id_Procesos',
 						   ];
 
 
@@ -33,9 +33,9 @@ class procesolavado extends Model
 
 
 
-    public function procesoramas()
+      public function procesos()
     {
-        return $this->belongsTo('App\procesoramas');
+        return $this->belongsTo('App\procesos');
     }
 
 

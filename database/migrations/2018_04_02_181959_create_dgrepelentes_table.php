@@ -31,6 +31,9 @@ class CreateDgrepelentesTable extends Migration
             $table->integer('id_Rep')->unsigned();
             $table->foreign('id_Rep')->references('id_Rep')->on('telasrepelentes');
 
+            $table->integer('id_Procesos')->unsigned();
+            $table->foreign('id_Procesos')->references('id_Procesos')->on('procesos');
+
             $table->timestamps();
         });
     }
